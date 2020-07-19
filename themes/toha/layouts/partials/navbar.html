@@ -3,13 +3,8 @@
     <a class="navbar-brand" href="{{ .Site.BaseURL }}">
       {{- .Site.Title -}}
     </a>
-    <button
-      class="navbar-toggler navbar-dark"
-      id="navbar-toggler"
-      ,type="button"
-      data-toggle="collapse"
-      data-target="#top-nav-items"
-    >
+    <button class="navbar-toggler navbar-dark" id="navbar-toggler" ,type="button" data-toggle="collapse"
+      data-target="#top-nav-items">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -19,32 +14,29 @@
           <a class="nav-link smooth-scroll" href="#home">Home</a>
         </li>
         {{- if .Site.Data.sections }}
-          {{- range sort .Site.Data.sections "section.weight" }}
-            {{ if and (.section.enable) (.section.showOnNavbar)}}
-              <li class="nav-item">
-                <a class="nav-link smooth-scroll" href="#{{ replace (lower .section.name) " " "-" }}">{{ .section.name }}</a>
-              </li>
-            {{ end }}
-          {{- end }}
+        {{- range sort .Site.Data.sections "section.weight" }}
+        {{ if and (.section.enable) (.section.showOnNavbar)}}
+        <li class="nav-item">
+          <a class="nav-link smooth-scroll" href="#{{ replace (lower .section.name) " " "-" }}">{{ .section.name }}</a>
+        </li>
+        {{ end }}
+        {{- end }}
         {{- end }}
         {{ $hasCustomMenus:= false }}
         {{ if and site.Params.customMenus }}
-          {{ if gt (len site.Params.customMenus) 0 }}
-            {{ $hasCustomMenus = true }}
-          {{ end }}
+        {{ if gt (len site.Params.customMenus) 0 }}
+        {{ $hasCustomMenus = true }}
         {{ end }}
-        {{ if (or site.Params.enableBlogPost $hasCustomMenus) }}
-          <div class="dropdown-divider" id="top-navbar-divider"></div>
         {{ end }}
         {{ if site.Params.enableBlogPost }}
-          <li class="nav-item">
-            <a class="nav-link" id="blog-link" href="/posts">Posts</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="blog-link" href="/posts">Posts</a>
+        </li>
         {{ end }}
         {{ range site.Params.customMenus }}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ .url }}">{{ .name }}</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ .url }}">{{ .name }}</a>
+        </li>
         {{ end }}
       </ul>
     </div>

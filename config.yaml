@@ -41,7 +41,7 @@ params:
   # some information about you
   author:
     name: "Yongping Gao"
-    image: "images/avatar.png"
+    image: "images/avatar.jpg"
     # give your some contact information. they will be used in the footer
     contactInfo:
       email: "gaoyongping1990@gmail.com"
